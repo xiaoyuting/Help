@@ -8,7 +8,7 @@
 
 #import "relativeInfoVC.h"
 #import "photoCell.h"
-#import "SDAutoLayout.h"
+
 @interface relativeInfoVC ()<UITableViewDelegate,UITableViewDataSource>
 @property   (nonatomic,strong)UITableView * tab  ;
 

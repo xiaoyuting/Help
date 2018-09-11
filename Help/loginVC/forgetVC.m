@@ -9,7 +9,7 @@
 #import "forgetVC.h"
 #import "cinView.h"
  
-#import "SDAutoLayout.h"
+
 #import "AVCaptureViewController.h"
 @interface forgetVC ()
 @property  (nonatomic,strong)UIButton   *resetPass;

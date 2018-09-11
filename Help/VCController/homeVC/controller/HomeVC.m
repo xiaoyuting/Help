@@ -11,7 +11,7 @@
 #import "relativeInfoVC.h"
 #import "videosVC.h"
 #import "RootBaseNav.h"
-#import "SDAutoLayout.h"
+
 #import "toolVC.h"
 #import "imgBtn.h"
 #import "AddButton.h"
@@ -108,10 +108,10 @@
     .heightIs((KScreenWidth/2.0-10)/0.75);
     
      [scrollView setupAutoContentSizeWithBottomView:self.toolNotifyBtn bottomMargin:0];
-     [self.relativePicBtn.img  sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/2d93c9404ff0218c4ca4c537cb6482e9_0_0.jpeg"]];
-    [self.relativeVideoBtn.img sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/d536b9c09b2681630afcc92222599f0e_0_0.jpeg"]];
-    [self.ownMediaBtn.img sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/d536b9c09b2681630afcc92222599f0e_0_0.jpeg"]];
-     [self.toolNotifyBtn.img sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/d536b9c09b2681630afcc92222599f0e_0_0.jpeg"]];
+//     [self.relativePicBtn.img  sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/2d93c9404ff0218c4ca4c537cb6482e9_0_0.jpeg"]];
+//    [self.relativeVideoBtn.img sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/d536b9c09b2681630afcc92222599f0e_0_0.jpeg"]];
+//    [self.ownMediaBtn.img sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/d536b9c09b2681630afcc92222599f0e_0_0.jpeg"]];
+//     [self.toolNotifyBtn.img sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/d536b9c09b2681630afcc92222599f0e_0_0.jpeg"]];
 }
 
 - (void)selectInfo: (UIButton *) sender{
@@ -193,8 +193,8 @@
 //点击元素触发事件
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"%@",indexPath);
-    [self.relativePicBtn.img  sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/d536b9c09b2681630afcc92222599f0e_0_0.jpeg"]];
-    [self.relativeVideoBtn.img sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/2d93c9404ff0218c4ca4c537cb6482e9_0_0.jpeg"]];
+//    [self.relativePicBtn.img  sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/d536b9c09b2681630afcc92222599f0e_0_0.jpeg"]];
+//    [self.relativeVideoBtn.img sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/2d93c9404ff0218c4ca4c537cb6482e9_0_0.jpeg"]];
     
 }
 

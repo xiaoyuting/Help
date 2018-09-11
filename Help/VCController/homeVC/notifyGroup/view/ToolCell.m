@@ -7,7 +7,7 @@
 //
 
 #import "ToolCell.h"
-#import "SDAutoLayout.h"
+
 @implementation ToolCell{
     UILabel * _titleLab;
     UIImageView * _bottomImg;

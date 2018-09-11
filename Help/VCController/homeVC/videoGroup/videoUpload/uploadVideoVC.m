@@ -8,7 +8,7 @@
 
 #import "uploadVideoVC.h"
 #import <AVFoundation/AVFoundation.h>
-#import "SDAutoLayout.h"
+
 @interface uploadVideoVC()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (nonatomic ,strong) UIImageView * videoimg;
 @property (nonatomic ,strong) UIImagePickerController *ipc;

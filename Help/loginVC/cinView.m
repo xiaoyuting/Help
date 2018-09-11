@@ -8,7 +8,7 @@
 
 #import "cinView.h"
 #import "ScanButton.h"
-#import "SDAutoLayout.h"
+
 @implementation cinView
 - (instancetype) init{
     if(self = [super init]){

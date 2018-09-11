@@ -7,7 +7,7 @@
 //
 
 #import "cinTextView.h"
-#import "SDAutoLayout.h"
+
 @implementation cinTextView
 
 - (instancetype)initWithFrame:(CGRect)frame placeHolder:(NSString * )holder{

@@ -10,7 +10,7 @@
 #import "cinView.h"
 #import "SegmentCate.h"
 #import "AVCaptureViewController.h"
-#import "SDAutoLayout.h"
+
 #import "CheakViewController.h"
 @interface registVC ()<scanDelegate>
 @property (nonatomic,strong) cinView * oldMan;

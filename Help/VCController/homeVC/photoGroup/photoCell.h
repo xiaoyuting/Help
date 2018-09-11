@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class   usermedModel;
 @interface photoCell : UITableViewCell
-- (void)setContentView:(NSArray *)dataArray;
-+ (CGFloat)HeightWithZanArray:(NSArray *)array;
+- (void)setTuijianContentView:( usermedModel *)model;
++ (CGFloat)setTuijianHeight:( usermedModel *)model;
 -(void)setContentRelativeView:(NSArray *)dataArray;
 + (CGFloat)HeightWithArray:(NSArray *)array;
-@property  (nonatomic, strong) NSArray *picArray;
+@property  (nonatomic, strong) NSMutableArray *picArray;
 @end

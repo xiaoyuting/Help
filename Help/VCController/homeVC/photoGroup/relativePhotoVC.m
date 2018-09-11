@@ -9,7 +9,7 @@
 #import "relativePhotoVC.h"
 #import "relativeCell.h"
 #import "photosVC.h"
-#import "SDAutoLayout.h"
+
 @interface relativePhotoVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView  * relative;
 @end

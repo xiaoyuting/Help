@@ -53,7 +53,8 @@
 \
 [View.layer setCornerRadius:(Radius)];\
 [View.layer setMasksToBounds:YES]
-
+#define  imgUrl(str)      [NSURL URLWithString:str]
+#define  placeholdImg   [UIImage imageNamed:@"iPad Spotlight-40"]
 //property 属性快速声明 别用宏定义了，使用代码块+快捷键实现吧
 
 ///IOS 版本判断
@@ -74,21 +75,7 @@
 //拼接字符串
 #define NSStringFormat(format,...) [NSString stringWithFormat:format,##__VA_ARGS__]
 
-//颜色
-#define KClearColor [UIColor clearColor]
-#define KWhiteColor [UIColor whiteColor]
-#define KBlackColor [UIColor blackColor]
-#define KGrayColor [UIColor grayColor]
-#define KGray2Color [UIColor lightGrayColor]
-#define KBlueColor [UIColor blueColor]
-#define KRedColor [UIColor redColor]
-#define kRandomColor    KRGBColor(arc4random_uniform(256)/255.0,arc4random_uniform(256)/255.0,arc4random_uniform(256)/255.0)        //随机色生成
-#define kGAP 10
-#define RGBA(R/*红*/, G/*绿*/, B/*蓝*/, A/*透明*/) \
-[UIColor colorWithRed:R/255.0f green:G/255.0f blue:B/255.0f alpha:A]
-#define ColorFF(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
-#define GMRGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
-#define  themesColor  ColorFF(0x00c32b)
+
 //字体
 #define BOLDSYSTEMFONT(FONTSIZE)[UIFont boldSystemFontOfSize:FONTSIZE]
 #define SYSTEMFONT(FONTSIZE)    [UIFont systemFontOfSize:FONTSIZE]

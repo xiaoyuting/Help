@@ -17,7 +17,7 @@
         self.img .userInteractionEnabled =YES;
         self.img.clipsToBounds  = YES;
         self.img.contentMode = UIViewContentModeScaleAspectFill;
-        [self.img sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/d536b9c09b2681630afcc92222599f0e_0_0.jpeg"]];
+       // [self.img sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/d536b9c09b2681630afcc92222599f0e_0_0.jpeg"]];
         self.name = [[UILabel alloc]initWithFrame:CGRectMake(0, w, w, 20)];
         self.name.textAlignment  = NSTextAlignmentCenter ;
         self.name.textColor = ColorFF(0xd4d4d4);

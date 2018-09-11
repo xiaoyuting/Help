@@ -17,19 +17,14 @@ PODS:
   - KSYMediaPlayer_iOS (3.0.4):
     - KSYMediaPlayer_iOS/KSYMediaPlayer_live (= 3.0.4)
   - KSYMediaPlayer_iOS/KSYMediaPlayer_live (3.0.4)
-  - SDWebImage (4.4.2):
-    - SDWebImage/Core (= 4.4.2)
-  - SDWebImage/Core (4.4.2)
 
 DEPENDENCIES:
   - AFNetworking
   - KSYMediaPlayer_iOS (from `https://github.com/ksvc/KSYMediaPlayer_iOS.git`)
-  - SDWebImage
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
-    - SDWebImage
 
 EXTERNAL SOURCES:
   KSYMediaPlayer_iOS:
@@ -43,8 +38,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   KSYMediaPlayer_iOS: f40d359490724d902a8dac3c2b73a4f318d36bcd
-  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
 
-PODFILE CHECKSUM: e08889a663d438aa66c36339810fa4f177db6d53
+PODFILE CHECKSUM: 603513bbd99b969ecff450c3a72c34643cb2d242
 
 COCOAPODS: 1.5.0

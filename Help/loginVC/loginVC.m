@@ -12,7 +12,7 @@
 #import "cinView.h"
 #import "forgetVC.h"
 #import "AppDelegate+AppService.h"
-#import "SDAutoLayout.h"
+
 
 @interface loginVC ()
 @property (nonatomic,strong)cinView     * ldView;

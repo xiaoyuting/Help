@@ -9,28 +9,40 @@
 #import "infoVC.h"
 #import "uploadPicVC.h"
 #import "photoCell.h"
-#import "SDAutoLayout.h"
+
 #import "SegmentCate.h"
+#import "infoModel.h"
+#import "usermedModel.h"
+#import "SDTimeLineCell.h"
+
+#define kTimeLineTableViewCellId @"SDTimeLineCell"
+
 @interface infoVC ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 @property   (nonatomic,strong)UITableView *   recTab;
 @property   (nonatomic,strong)UITableView * localTab;
 @property   (nonatomic,strong)SegmentCate * selectMode;
 @property   (nonatomic,strong)UIScrollView * contentSrcView;
 
+@property   (nonatomic,strong)NSMutableArray * info;
+@property   (nonatomic,assign)int    recTag;
+
 @end
 
 @implementation infoVC
 
 - (void)viewDidLoad {
-    [self request];
+    self.info = [[NSMutableArray   alloc]init];
+    self.recTag = 1;
     [super viewDidLoad];
     [self setSubviews];
+  
     // Do any additional setup after loading the view.
 }
 
 - (void)setSubviews{
     [self setNavRightItemTitle:@"添加" andImage:nil];
     self.title= @"友邻";
+     __weak typeof(self) weakSelf = self;
 
     self.selectMode  = [[SegmentCate alloc]initWithFrame:CGRectMake(0,[self naviGationH] , KScreenWidth, 40) titleArray:@[@"推荐",@"附近的人"]];
     self .selectMode .segmentedControlTitleSpacingStyle = SegmentedControlTitleSpaceStyleFixed;
@@ -59,6 +71,9 @@
     self.recTab.delegate   = self;
     self.recTab.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.recTab.dataSource = self;
+    self.recTab.estimatedRowHeight = 0;
+    self.recTab.estimatedSectionFooterHeight = 0;
+    self.recTab.estimatedSectionHeaderHeight = 0;
     self.recTab.backgroundColor = [UIColor whiteColor];
     self.contentSrcView = [UIScrollView new];
     [self.view addSubview:self.contentSrcView];
@@ -78,7 +93,21 @@
     .bottomEqualToView(self.contentSrcView)
     .widthIs(KScreenWidth);
     [self.contentSrcView setupAutoContentSizeWithRightView:self.localTab rightMargin:0];
-    
+   self.recTab.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(recHeadRef)];
+    self.recTab.mj_footer = [MJRefreshBackNormalFooter  footerWithRefreshingTarget:self refreshingAction:@selector(recFootRef)];
+    [self.recTab.mj_header beginRefreshing];
+}
+- (void)recHeadRef{
+    [self.info removeAllObjects];
+    self.recTag =1;
+    [self Recrequest:self.recTag];
+    [self.recTab.mj_header endRefreshing];
+}
+
+- (void)recFootRef{
+    self.recTag ++;
+    [self Recrequest:self.recTag];
+    [self.recTab.mj_footer endRefreshing];
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if([scrollView isEqual:self.contentSrcView]){
@@ -93,26 +122,35 @@
     [self pushViewController:pic animated:YES];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.info.count;
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return    [photoCell  HeightWithZanArray: @[@"http://ww2.sinaimg.cn/thumbnail/904c2a35jw1emu3ec7kf8j20c10epjsn.jpg",
-                                                @"http://ww2.sinaimg.cn/thumbnail/98719e4agw1e5j49zmf21j20c80c8mxi.jpg",
-                                                @"http://ww2.sinaimg.cn/thumbnail/642beb18gw1ep3629gfm0g206o050b2a.gif"
-                                                ]];
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // >>>>>>>>>>>>>>>>>>>>> * cell自适应 * >>>>>>>>>>>>>>>>>>>>>>>>
+    id model = self.info[indexPath.row];
+    return [self.recTab cellHeightForIndexPath:indexPath model:model keyPath:@"model" cellClass:[SDTimeLineCell class] contentViewWidth:[self cellContentViewWith]];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString * str = @"infoCell";
-    photoCell   * cell =[tableView dequeueReusableCellWithIdentifier:str];
-    if (!cell){
-        cell = [[photoCell  alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:str];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    SDTimeLineCell *cell = [tableView dequeueReusableCellWithIdentifier:kTimeLineTableViewCellId];
+    cell.indexPath = indexPath;
+    __weak typeof(self) weakSelf = self;
+    if (!cell.moreButtonClickedBlock) {
+        [cell setMoreButtonClickedBlock:^(NSIndexPath *indexPath) {
+            usermedModel *model = weakSelf.info[indexPath.row];
+           // model.isOpening = !model.isOpening;
+            [weakSelf.recTab reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        }];
+      
     }
-    [cell setContentView:@[@"http://ww2.sinaimg.cn/thumbnail/904c2a35jw1emu3ec7kf8j20c10epjsn.jpg",
-                           @"http://ww2.sinaimg.cn/thumbnail/98719e4agw1e5j49zmf21j20c80c8mxi.jpg",
-                           @"http://ww2.sinaimg.cn/thumbnail/642beb18gw1ep3629gfm0g206o050b2a.gif"
-                           ]];
+    
+    ////// 此步设置用于实现cell的frame缓存，可以让tableview滑动更加流畅 //////
+    
+    [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
+    
+    ///////////////////////////////////////////////////////////////////////
+    
+    cell.model = self.info[indexPath.row];
+ 
     
     return cell;
 }
@@ -120,14 +158,20 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-- (void)request{
+- (void)Recrequest:(int)tag{
     [RequestManager requestWithType:HttpRequestTypeGet
-                          urlString:URL_moment_recommend2 parameters:@{@"pageNum":@"1",
-                                                                    @"pageSize":@"3"
+                          urlString:URL_moment_recommend2 parameters:@{
+                                        @"pageNum":[NSString stringWithFormat:@"%d",tag],
+                                       @"pageSize":@"5"
                                                                                                     }
                        successBlock:^(id response) {
                         DLog(@"response==%@",response);
-                                                                                                    }
+                         infoModel  * model = [infoModel yy_modelWithJSON:response ];
+                           [self.info addObjectsFromArray: model.data];
+                           [self.recTab reloadData];
+                    
+                           NSLog(@"self.model==%@",model.code);
+                       }
                        failureBlock:^(NSError *error) {
                                                                                                         
                                                                                                     }

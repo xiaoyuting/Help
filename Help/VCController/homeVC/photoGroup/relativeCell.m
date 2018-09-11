@@ -7,7 +7,7 @@
 //
 
 #import "relativeCell.h"
-#import "SDAutoLayout.h"
+
 @interface relativeCell ()
 {
     UIImageView * _icon;
@@ -80,7 +80,7 @@
 -(void)setDicInfoRelative:(NSDictionary *)dicInfoRelative{
     _dicInfoRelative = dicInfoRelative;
     _name.text =@"name";
-    [_icon   sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/d536b9c09b2681630afcc92222599f0e_0_0.jpeg"]]; 
+    //[_icon   sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/d536b9c09b2681630afcc92222599f0e_0_0.jpeg"]]; 
     _distance.text = @"distance";
 }
 -(void)setDicInfoThird:(NSDictionary *)dicInfoThird{

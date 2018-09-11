@@ -9,6 +9,10 @@
 #import "photoCell.h"
 #import "bottomView.h"
 #import "relativeCollCell.h"
+#import "mediaModel.h"
+#import "usermedModel.h"
+#import "userModel.h"
+#import "SDWebImageManager.h"
 @interface  photoCell()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout  >
 {
     
@@ -27,6 +31,7 @@
 @property (nonatomic,strong)  UICollectionViewFlowLayout *flowLayer;
 @property (nonatomic,strong)  UIImageView * line;
 @property (nonatomic,strong)  bottomView      * bottomview;
+@property (nonatomic,strong)  NSMutableArray  * mdeiaArr;
 @end
 
 @implementation photoCell
@@ -56,26 +61,29 @@
         [collecView registerClass:[relativeCollCell class] forCellWithReuseIdentifier:@"cell"];
         collecView.showsHorizontalScrollIndicator = NO;
         collecView.backgroundColor = [UIColor whiteColor];
-        bottomview = [[bottomView alloc]init];
+       
+        self.picArray = [NSMutableArray array];
     }
     return self;
 }
--(void)setContentView:(NSArray *)dataArray
+- (void)setTuijianContentView:( usermedModel *)model
 {
-    self.picArray=@[@"http://ww2.sinaimg.cn/thumbnail/904c2a35jw1emu3ec7kf8j20c10epjsn.jpg",
-                    @"http://ww2.sinaimg.cn/thumbnail/98719e4agw1e5j49zmf21j20c80c8mxi.jpg",
-                    @"http://ww2.sinaimg.cn/thumbnail/642beb18gw1ep3629gfm0g206o050b2a.gif"
-                    ];
-    [self setSubView];
+  
+    for(mediaModel * m in model.media){
+        [self.picArray  addObject:m.url];
+    }
+  
+    [self setTuijianSubView:model];
 }
--(void)setSubView{
+-(void)setTuijianSubView:( usermedModel *)model{
     CGFloat  ZH =0;
-    [avrater sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/d536b9c09b2681630afcc92222599f0e_0_0.jpeg"]];
+ 
+    [avrater sd_setImageWithURL:imgUrl(model.user.avatarUrl)  placeholderImage:placeholdImg];
     ZH = 70 ;
-    CGFloat titleH = [photoCell getTextHeight:KScreenWidth-20 text:@"wqewqewqewqewqewqewqewqewqewqewqewewqewqewqewqewqewqewqewqewqewqewqewqewqewq" font:SYSTEMFONT(14)];
+    CGFloat titleH = [photoCell getTextHeight:KScreenWidth-20 text:model.content font:SYSTEMFONT(14)];
     titleLab.frame =CGRectMake(10, ZH, KScreenWidth-20, titleH);
     
-    titleLab.text = @"wqewqewqewqewqewqewqewqewqewqewqewewqewqewqewqewqewqewqewqewqewqewqewqewqewq" ;
+    titleLab.text =  model.content ;
     ZH = ZH+titleH+10;
     
     collecView.frame = CGRectMake(0, ZH, KScreenWidth, [self HeightWithCollview:self.picArray]);
@@ -95,11 +103,13 @@
     
 }
 -(void)setContentRelativeView:(NSArray *)dataArray
+
 {
-    self.picArray=@[@"http://ww2.sinaimg.cn/thumbnail/904c2a35jw1emu3ec7kf8j20c10epjsn.jpg",
-                    @"http://ww2.sinaimg.cn/thumbnail/98719e4agw1e5j49zmf21j20c80c8mxi.jpg",
-                    @"http://ww2.sinaimg.cn/thumbnail/642beb18gw1ep3629gfm0g206o050b2a.gif"
-                    ];
+    [self.mdeiaArr removeAllObjects];
+    for(mediaModel * model in dataArray){
+    [self.mdeiaArr addObject:model.url ];
+}
+    self.picArray = [self.mdeiaArr copy];
     [self setRelativetSubView];
 }
 -(void)setRelativetSubView{
@@ -228,17 +238,18 @@
     
     return height;
 }
-+ (CGFloat)HeightWithZanArray:(NSArray *)array
++ (CGFloat)setTuijianHeight:( usermedModel *)model
 {
     CGFloat height = 0;
-    if (array.count%3==0) {
+    NSInteger count = model.media.count;
+    if ( count%3==0) {
         
-        height=array.count/3*(KScreenWidth-40)/3.0+(array.count/3+1)*10;
+        height=count/3*(KScreenWidth-40)/3.0+( count/3+1)*10;
     }else{
         
-        height=(array.count/3+1)*(KScreenWidth-40)/3.0+(array.count/3+2)*10;
+        height=( count/3+1)*(KScreenWidth-40)/3.0+(count/3+2)*10;
     }
-    height = height+130+ [photoCell getTextHeight:KScreenWidth-20 text:@"wqewqewqewqewqewqewqewqewqewqewqewewqewqewqewqewqewqewqewqewqewqewqewqewqewq" font:SYSTEMFONT(14)];;
+    height = height+130+ [photoCell getTextHeight:KScreenWidth-20 text:model.content font:SYSTEMFONT(14)];;
     
     return height;
 }

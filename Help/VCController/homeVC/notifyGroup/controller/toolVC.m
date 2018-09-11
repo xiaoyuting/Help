@@ -8,7 +8,7 @@
 
 #import "toolVC.h"
 #import "ToolCell.h"
-#import "SDAutoLayout.h"
+
 @interface toolVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView * toolTab;
 @property (nonatomic,strong) NSArray     * arr;

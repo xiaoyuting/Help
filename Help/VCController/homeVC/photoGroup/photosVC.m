@@ -8,7 +8,7 @@
 
 #import "photosVC.h"
 #import "photoCell.h"
-#import "SDAutoLayout.h"
+
 @interface photosVC ()<UITableViewDelegate,UITableViewDataSource>
 @property   (nonatomic,strong)UITableView * tab  ;
 

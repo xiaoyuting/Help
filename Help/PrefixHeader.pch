@@ -16,9 +16,11 @@
 #import "CommonMacros.h"
 #import "UIImageView+WebCache.h"
 #import "Masonry.h"
+#import "SDAutoLayout.h"
 #import "RequestManager.h"
 #import "ugliestTools.h"
-#import "SDWebImageManager.h"
+#import "YYModel.h"
+#import "MJRefresh.h"
 
  
 

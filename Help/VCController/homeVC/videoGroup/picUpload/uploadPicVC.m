@@ -8,7 +8,7 @@
 
 #import "uploadPicVC.h"
  
-#import "SDAutoLayout.h"
+
 //static const CGFloat kPhotoViewMargin = 12.0;
 @interface uploadPicVC ()< UIImagePickerControllerDelegate,UITextViewDelegate>
 

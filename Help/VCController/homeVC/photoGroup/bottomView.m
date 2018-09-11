@@ -7,7 +7,7 @@
 //
 
 #import "bottomView.h"
-#import "SDAutoLayout.h"
+
 @implementation bottomView
 
 -(instancetype)initWithFrame:(CGRect)frame{

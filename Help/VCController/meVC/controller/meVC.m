@@ -8,7 +8,7 @@
 
 #import "meVC.h"
 #import "meCell.h"
-#import "SDAutoLayout.h"
+
 @interface meVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *  Tab;
 @property (nonatomic,strong) NSArray     * arr;
@@ -48,7 +48,7 @@
     self.img.contentMode = UIViewContentModeScaleAspectFill;
     self.img.clipsToBounds =YES;
    
-    [self.img sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/d536b9c09b2681630afcc92222599f0e_0_0.jpeg"]];
+    //[self.img sd_setImageWithURL:[NSURL URLWithString:@"http://img.wdjimg.com/image/video/d536b9c09b2681630afcc92222599f0e_0_0.jpeg"]];
     [head addSubview:self.img];
     
     self.name = [[UILabel alloc]initWithFrame:CGRectMake(80, 13, 200, 30)];

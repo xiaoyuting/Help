@@ -13,4 +13,5 @@
 @property (nonatomic,assign) BOOL         radio;
 @property (nonatomic,copy)   NSString     * imgUrl;
 @property (nonatomic,strong) UILabel      * name;
+@property (nonatomic,strong)NSDictionary * dic;
 @end

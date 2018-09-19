@@ -11,7 +11,7 @@
 #import "relativeInfoVC.h"
 #import "videosVC.h"
 #import "RootBaseNav.h"
-
+#import "relativeUsersRequest.h"
 #import "toolVC.h"
 #import "imgBtn.h"
 #import "AddButton.h"
@@ -24,6 +24,7 @@
 @property (nonatomic,strong) imgBtn       * ownMediaBtn;
 @property (nonatomic,strong) imgBtn       * toolNotifyBtn;
 @property (nonatomic,strong) AddButton     * moreRelativeBtn;
+@property (nonatomic,strong)NSMutableArray * releativeArr;
 @property (nonatomic,strong) UICollectionView * collecView;
 @property (nonatomic,strong) UICollectionViewFlowLayout *flowLayer;
 @end
@@ -34,6 +35,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self setSubViews];
+    [self relativeRequest];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,6 +45,7 @@
 }
 
 - (void)setSubViews{
+    self.releativeArr =[NSMutableArray array];
     self.title          = @"首页";
     self.relativePicBtn =[self Tag:0 Name:@"亲友相册" img:@"home"];
     self.relativeVideoBtn =[self Tag:1 Name:@"视频" img:@"home2"];
@@ -145,7 +149,7 @@
 //每个分区上的元素个数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return self.releativeArr.count;
 }
 
 //设置元素内容
@@ -154,6 +158,7 @@
     static NSString *identify =@"relativeCollCell";
     relativeCollCell    *cell =[collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
     cell.radio = YES;
+    cell.dic = self.releativeArr[indexPath.row];
     return cell;
 }
 //设置每个item水平间距
@@ -208,7 +213,18 @@
     return btn;
 }
 
-
+- (void)relativeRequest{
+    [relativeUsersRequest profileRelativeUsersSuccess:^(NSDictionary *dic) {
+        NSLog(@"dic==%@",dic);
+        if ([[dic objectForKey:@"code"]isEqualToString:@"200"]){
+            [self.releativeArr addObjectsFromArray:[dic objectForKey:@"data"]];
+            [self.collecView reloadData];
+            
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
 
 
 @end

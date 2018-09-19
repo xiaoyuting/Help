@@ -30,7 +30,7 @@
 #import "SDWeiXinPhotoContainerView.h"
 
 #import "UIView+SDAutoLayout.h"
-
+#import "videoPlayerVC.h"
 #import "SDPhotoBrowser.h"
 #import "relativeCollCell.h"
 #import <AVFoundation/AVFoundation.h>
@@ -66,6 +66,8 @@
 //    .spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
     for (int i = 0; i < 9; i++) {
         UIImageView *imageView = [UIImageView new];
+        imageView.contentMode = UIViewContentModeScaleAspectFill    ;
+        imageView.layer.masksToBounds =YES;    
         [self addSubview:imageView];
         imageView.userInteractionEnabled = YES;
         imageView.tag = i;
@@ -181,15 +183,29 @@
 
 - (void)tapImageView:(UITapGestureRecognizer *)tap
 {
+    if (self.type==1){
+        
+    
     UIView *imageView = tap.view;
     SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
     browser.currentImageIndex = imageView.tag;
     browser.sourceImagesContainerView = self;
     browser.imageCount = self.picPathStringsArray.count;
     browser.delegate = self;
-    [browser show];
+        [browser show];
+        
+    }else{
+         UIView *imageView = tap.view;
+        videoPlayerVC * vc = [[videoPlayerVC alloc]initwithVideoArr:self.picPathStringsArray select:imageView.tag];
+        [[[UIApplication sharedApplication].delegate window].rootViewController presentViewController:vc  animated:YES completion:nil];
+    }
 }
-
+- (void)onBack:(id)sender
+{
+    [[[UIApplication sharedApplication].delegate window].rootViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    
+}
 - (CGFloat)itemWidthForPicPathArray:(NSArray *)array
 {
     if (array.count == 1) {
@@ -245,15 +261,16 @@
 - (void)videoImageWithvideoURL:(NSURL *)videoURL atTime:(NSTimeInterval)time  :(UIImageView * )img{
     
     //先从缓存中找是否有图片
+    __weak typeof(self)weakself =self;
     SDImageCache *cache =  [SDImageCache sharedImageCache];
     UIImage *memoryImage =  [cache imageFromMemoryCacheForKey:videoURL.absoluteString];
     if (memoryImage) {
-        img.image = memoryImage;
+        img.image = [weakself addImage:memoryImage withImage:@"playerStart"];;
         return;
     }else{
         UIImage *diskImage =  [cache imageFromDiskCacheForKey:videoURL.absoluteString];
         if (diskImage) {
-            img.image = diskImage;
+            img.image = [weakself addImage:diskImage withImage:@"playerStart"];
             return;
         }
     }
@@ -278,11 +295,28 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             SDImageCache *cache =  [SDImageCache sharedImageCache];
             [cache storeImage:thumbnailImage forKey:videoURL.absoluteString toDisk:YES];
-            img.image = thumbnailImage;
+            img.image = [weakself addImage:thumbnailImage withImage:@"playerStart"];
         });
         
     });
     
+}
+- (UIImage *)addImage:(UIImage *)image1 withImage:(NSString *)imageName2 {
+    
+    
+    UIImage *image2 = [UIImage imageNamed:imageName2];
+    
+    UIGraphicsBeginImageContext(image1.size);
+    
+    [image1 drawInRect:CGRectMake(0, 0, image1.size.width, image1.size.height)];
+    
+    [image2 drawInRect:CGRectMake(image1.size.width*0.4 ,(image1.size.height -0.2*image1.size.width) /2.0, 0.2*image1.size.width, image1.size.width*0.2)];
+    
+    UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return resultingImage;
 }
 /*//设置分区
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView{

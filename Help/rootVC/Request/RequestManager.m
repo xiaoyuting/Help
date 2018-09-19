@@ -20,7 +20,7 @@
 
 #import "AFNetworking.h"
 #import "AFNetworkActivityIndicatorManager.h"
-
+#import "DBInfo.h"
 #import "UIImage+CompressImage.h"
 
 
@@ -99,10 +99,10 @@ static NSMutableArray *tasks;
          */
         AFJSONRequestSerializer *request = [AFJSONRequestSerializer serializer];
         manager.requestSerializer = request;
-//        if(  [ DB getStringById:@"token" fromTable:tabName]){
-//
-            [manager.requestSerializer setValue:@"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsIlVTRVJfSUQiOjIwODh9.BScEPvy3zNundjzRvLAr3RH6MzzXhpWnmva09dtUokM"   forHTTPHeaderField:@"Authorization"];
-//        }
+       if( [DBInfo getToken]){
+
+            [manager.requestSerializer setValue:[DBInfo getToken]   forHTTPHeaderField:@"Authorization"];
+        }
         /*! 设置apikey ------类似于自己应用中的tokken---此处仅仅作为测试使用*/
         //        [manager.requestSerializer setValue:apikey forHTTPHeaderField:@"apikey"];
         

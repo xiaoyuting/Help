@@ -31,7 +31,9 @@
 
 
 @class   usermedModel;
-
+typedef void(^linkReleact)(NSIndexPath *indexPath);
+typedef void(^zanblock)(NSIndexPath *indexPath);
+typedef void(^collBlock)(NSIndexPath *indexPath);
 @interface SDTimeLineCell : UITableViewCell
 
 
@@ -42,4 +44,5 @@
 
 @property (nonatomic, copy) void (^moreButtonClickedBlock)(NSIndexPath *indexPath);
 
+@property (nonatomic,copy)collBlock collectblock;
 @end

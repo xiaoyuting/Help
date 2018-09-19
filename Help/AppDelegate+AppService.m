@@ -7,10 +7,17 @@
 //
 
 #import "AppDelegate+AppService.h"
+#import "DBInfo.h"
 #define LOG_EXPIRE_TIME -7 * 24 * 60 * 60
 @implementation AppDelegate (AppService)
 -(void)initServiceapplication:(UIApplication *)application  didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     [self cinViewLogin];
+    if([DBInfo getLoginStatus]==1){
+        [self cinViewTabbar];
+    }else{
+        [self cinViewLogin];
+    }
+    
 }
 - (void) cinViewLogin{
     loginVC  * login = [[loginVC alloc]init];

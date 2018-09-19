@@ -39,19 +39,24 @@
 const CGFloat contentLabelFontSize = 15;
 CGFloat maxContentLabelHeight = 0; // 根据具体font而定
 
-NSString *const kSDTimeLineCellOperationButtonClickedNotification = @"SDTimeLineCellOperationButtonClickedNotification";
+ 
 
 @implementation SDTimeLineCell
 
 {
-    UIImageView *_iconView;
-    UILabel *_nameLable;
-    UILabel *_contentLabel;
-    SDWeiXinPhotoContainerView *_picContainerView;
-    UILabel *_timeLabel;
-    UIButton *_moreButton;
-    UIButton *_operationButton;
+    UIImageView * _iconView;
+    UILabel * _nameLable;
+    UILabel * _contentLabel;
+    SDWeiXinPhotoContainerView * _picContainerView;
+    UILabel  * _timeLabel;
+    UIButton * _moreButton;
+    UIButton * _operationButton;
     UIButton * _chatBtn;
+    UIButton * _collectBtn;
+    UILabel  * _collLab;
+    UIButton * _zanBtn;
+    UILabel  * _zanLab;
+
     
 }
 
@@ -76,11 +81,17 @@ NSString *const kSDTimeLineCellOperationButtonClickedNotification = @"SDTimeLine
    
     
     _iconView = [UIImageView new];
-    
+    _iconView.layer.cornerRadius =20;
+    _iconView.layer.masksToBounds=YES;
+   // _iconView.layer.borderWidth=1;
+   // _iconView.layer.borderColor=CFontColor2.CGColor;
     _nameLable = [UILabel new];
     _nameLable.font = [UIFont systemFontOfSize:14];
     _nameLable.textColor = [UIColor colorWithRed:(54 / 255.0) green:(71 / 255.0) blue:(121 / 255.0) alpha:0.9];
-    
+    _chatBtn = [[UIButton alloc]init];
+    [_chatBtn addTarget:self  action:@selector(linkchat) forControlEvents:UIControlEventTouchUpInside    ];
+    [_chatBtn setBackgroundImage:[UIImage imageNamed:@"bi3"] forState:UIControlStateNormal];
+    //[_chatBtn setImage: forState:UIControlStateNormal];
     _contentLabel = [UILabel new];
     _contentLabel.font = [UIFont systemFontOfSize:contentLabelFontSize];
     _contentLabel.numberOfLines = 0;
@@ -94,25 +105,29 @@ NSString *const kSDTimeLineCellOperationButtonClickedNotification = @"SDTimeLine
     [_moreButton addTarget:self action:@selector(moreButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     _moreButton.titleLabel.font = [UIFont systemFontOfSize:14];
     
-    _operationButton = [UIButton new];
-    [_operationButton setImage:[UIImage imageNamed:@"AlbumOperateMore"] forState:UIControlStateNormal];
-    [_operationButton addTarget:self action:@selector(operationButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+//    _operationButton = [UIButton new];
+//    [_operationButton setImage:[UIImage imageNamed:@"AlbumOperateMore"] forState:UIControlStateNormal];
+//    [_operationButton addTarget:self action:@selector(operationButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     
     _picContainerView = [SDWeiXinPhotoContainerView new];
     
     
-    
+    _zanLab = [UILabel new];
+    _zanLab .font =SYSTEMFONT(12);
+    _zanLab.textColor =CFontColor2;
+    _zanBtn = [UIButton new];
+    [_zanBtn addTarget:self action:@selector(zanContent) forControlEvents:UIControlEventTouchUpInside];
+    [_zanBtn setBackgroundImage:[UIImage imageNamed:@"zan.png"] forState:UIControlStateNormal];
+    _collectBtn = [UIButton new];
+    [_collectBtn addTarget:self action:@selector(collectContent ) forControlEvents:UIControlEventTouchUpInside];
+    [_collectBtn setBackgroundImage:[UIImage imageNamed:@"clo.png"] forState:UIControlStateNormal];
     _timeLabel = [UILabel new];
     _timeLabel.font = [UIFont systemFontOfSize:13];
     
-    
+   
    
     __weak typeof(self) weakSelf = self;
-    
- 
-    
-    
-    NSArray *views = @[_iconView, _nameLable, _contentLabel, _moreButton, _picContainerView, _timeLabel, _operationButton, ];
+    NSArray *views = @[_iconView, _nameLable, _chatBtn, _contentLabel, _moreButton, _picContainerView, _timeLabel,_zanLab,_zanBtn,_collectBtn ];
     
     [self.contentView sd_addSubviews:views];
     
@@ -124,6 +139,11 @@ NSString *const kSDTimeLineCellOperationButtonClickedNotification = @"SDTimeLine
     .topSpaceToView(contentView, margin + 5)
     .widthIs(40)
     .heightIs(40);
+    _chatBtn.sd_layout
+    .topEqualToView(_iconView)
+    .rightSpaceToView(contentView, 20)
+    .widthIs(20)
+    .heightIs(20);
     
     _nameLable.sd_layout
     .leftSpaceToView(_iconView, margin)
@@ -153,20 +173,37 @@ NSString *const kSDTimeLineCellOperationButtonClickedNotification = @"SDTimeLine
     .heightIs(15);
     [_timeLabel setSingleLineAutoResizeWithMaxWidth:200];
     
-    _operationButton.sd_layout
-    .rightSpaceToView(contentView, margin)
-    .centerYEqualToView(_timeLabel)
-    .heightIs(25)
-    .widthIs(25);
+    _zanLab.sd_layout
+    .topSpaceToView(_picContainerView, margin)
+    .rightSpaceToView(contentView, 20)
+    .heightIs(15);
+    [_zanLab setSingleLineAutoResizeWithMaxWidth:100];
+    
+    _zanBtn.sd_layout
+    .topSpaceToView(_picContainerView, margin)
+    .rightSpaceToView(_zanLab, 5)
+    .heightIs(15)
+    .widthIs(15);
+    
+    _collectBtn.sd_layout
+    .topSpaceToView(_picContainerView, margin)
+    .rightSpaceToView(_zanBtn, 20)
+    .heightIs(15)
+    .widthIs(15);
+    
+   
+    
+//    _operationButton.sd_layout
+//    .rightSpaceToView(contentView, margin)
+//    .centerYEqualToView(_timeLabel)
+//    .heightIs(25)
+//    .widthIs(25);
     
     
 }
 
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
+
 
 - (void)setModel:(usermedModel *)model
 {
@@ -215,9 +252,9 @@ NSString *const kSDTimeLineCellOperationButtonClickedNotification = @"SDTimeLine
     
    
     
-    [self setupAutoHeightWithBottomView: _picContainerView bottomMargin:15];
-    
-   // _timeLabel.text = @"1分钟前";
+    [self setupAutoHeightWithBottomView: _collectBtn     bottomMargin:15];
+    _zanLab.text = model.likesCount;
+//    _timeLabel.text = @"1分钟前";
 }
 
 - (void)setFrame:(CGRect)frame
@@ -251,8 +288,19 @@ NSString *const kSDTimeLineCellOperationButtonClickedNotification = @"SDTimeLine
 //
 //    return _msgContent;
 //}
-
-
-
+#pragma mark 
+- (void)linkchat{
+    
+}
+#pragma mark
+- (void)zanContent{
+    
+}
+#pragma mark
+- (void)collectContent{
+    if (self.collectblock){
+        self.collectblock(self.indexPath);
+    }
+}
 @end
 

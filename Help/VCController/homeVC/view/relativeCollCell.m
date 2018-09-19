@@ -40,5 +40,10 @@
     self.name.text  =@"名字";
     [self.img sd_setImageWithURL:[NSURL URLWithString: imgUrl]];
 }
-
+- (void)setDic:(NSDictionary *)dic{
+    _dic =dic;
+    self.name.text  =[dic objectForKey:@"realName"];
+    
+    [self.img sd_setImageWithURL:imgUrl([dic objectForKey:@""]) placeholderImage:placeholdImg];
+}
 @end

@@ -12,8 +12,10 @@
 #import "cinView.h"
 #import "forgetVC.h"
 #import "AppDelegate+AppService.h"
-
-
+#import "usernameLogin.h"
+#import "phoneLogin.h"
+#import "DBInfo.h"
+#import "getPersonInfoRequest.h"
 @interface loginVC ()
 @property (nonatomic,strong)cinView     * ldView;
 
@@ -28,7 +30,7 @@
     self.title =@"登录";
     [super viewDidLoad];
     [self setSubviews ];
-    [self login];
+
 }
 
 
@@ -83,7 +85,11 @@
     .heightIs(40)
     .widthIs(100);
     
-    
+    if ([DBInfo   getInfo]){
+      
+    self.ldView.password.cinField.text = [[DBInfo   getInfo] objectForKey:@"password"];
+    self.ldView.phone.cinField.text = [[DBInfo   getInfo] objectForKey:@"phone"];
+    }
     
     
 }
@@ -98,17 +104,78 @@
          [self pushViewController:forget animated:YES];
         
     }else if (sender.tag==2){
-        
+        [self login];
+       
     }
   
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [[AppDelegate sharedAppDelegate] cinViewTabbar];
+  //  [[AppDelegate sharedAppDelegate] cinViewTabbar];
 }
 - (void)login{
+    NSLog(@"getToken==%@",[DBInfo getToken]);
+    if ( [ugliestTools isStrEmpty:self.ldView.phone.cinField.text]){
+        [self showProgressTitle:@"请输入账号或手机号" autoHide:YES];
+        return;
+    }
+    if ([ugliestTools isStrEmpty:self.ldView.password.cinField.text]){
+        [self showProgressTitle:@"请输入密码" autoHide:YES];
+        return;
+    }
+
+    if ([ugliestTools isPhone:self.ldView.phone.cinField.text]){
+        [phoneLogin  phoneInfo: @{ @"password": self.ldView.password.cinField.text,
+                                   @"phone": self.ldView.phone.cinField.text}
+                  LoginSuccess:^(NSDictionary *dic) {
+                      DLog(@"dic=%@",dic);
+                      if([[dic objectForKey:@"code"] isEqualToString:@"200"]){
+                          [DBInfo saveToken:[dic objectForKey:@"data"]];
+                          [DBInfo saveLoadStatus:1];
+                          [DBInfo saveInfo:@{ @"password": self.ldView.password.cinField.text,
+                                              @"phone": self.ldView.phone.cinField.text}];
+                          [self setPersonInfo];
+                          [[AppDelegate sharedAppDelegate] cinViewTabbar];
+                      }
+                  } failure:^(NSError *error) {
+                      
+                  }];
+    }else{
+        [usernameLogin usernameInfo: @{ @"password": self.ldView.password.cinField.text,
+                                        @"username": self.ldView.phone.cinField.text}
+                       LoginSuccess:^(NSDictionary *dic) {
+                            DLog(@"dic=%@",dic);
+                           if([[dic objectForKey:@"code"] isEqualToString:@"200"]){
+                               [DBInfo saveToken:[dic objectForKey:@"data"]];
+                               [DBInfo saveLoadStatus:1];
+                               [DBInfo saveInfo:@{ @"password": self.ldView.password.cinField.text,
+                                                   @"phone": self.ldView.phone.cinField.text}];
+                                 [self setPersonInfo];
+                               [[AppDelegate sharedAppDelegate] cinViewTabbar];
+                           }else{
+                        
+                               [self showProgressTitle:[dic objectForKey:@"message"] autoHide:YES];
+                               
+                           }
+                       } failure:^(NSError *error) {
+                           
+                       }];
+    }
    
 }
-
+- (void)setPersonInfo{
+    [getPersonInfoRequest getPersonInfoSuccess:^(NSDictionary *dic) {
+        if([[dic objectForKey:@"code"] isEqualToString:@"200"]){
+            [DBInfo saveInfo:[dic objectForKey:@"data"]];
+            
+            DLog(@"person==%@",[dic objectForKey:@"data"]);
+        }else{
+      
+            
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

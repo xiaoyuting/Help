@@ -14,13 +14,17 @@
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            scope = "0"
-            stopOnStyle = "0">
+            filePath = "Help/VCController/infoVC/videoPlayerVC.m"
+            timestampString = "558956946.632404"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "218"
+            endingLineNumber = "218">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -29,13 +33,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Help/VCController/thirdToolS/thirdVC/thirdVC.m"
-            timestampString = "558328145.991275"
+            filePath = "Help/loginVC/controll/loginVC.m"
+            timestampString = "559065361.902396"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "-selectView:"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "-setPersonInfo"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

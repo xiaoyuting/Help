@@ -8,7 +8,8 @@
 
 #import "meVC.h"
 #import "meCell.h"
-
+#import "AppDelegate+AppService.h"
+#import "DBInfo.h"
 @interface meVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *  Tab;
 @property (nonatomic,strong) NSArray     * arr;
@@ -107,5 +108,9 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    if ([[NSString stringWithFormat:@"%ld",indexPath.section] isEqualToString:@"2"]){
+         [[AppDelegate sharedAppDelegate] cinViewLogin];
+        [DBInfo saveLoadStatus:0];
+    }
 }
 @end

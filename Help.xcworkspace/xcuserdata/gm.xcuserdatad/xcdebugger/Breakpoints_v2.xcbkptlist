@@ -19,12 +19,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Help/VCController/infoVC/videoPlayerVC.m"
-            timestampString = "558956946.632404"
+            filePath = "Help/VCController/homeVC/controller/picAndVideoVC.m"
+            timestampString = "560770659.900111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218">
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "-init"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -33,13 +35,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Help/loginVC/controll/loginVC.m"
-            timestampString = "559065361.902396"
+            filePath = "Help/VCController/homeVC/controller/picAndVideoVC.m"
+            timestampString = "560770659.900423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "-setPersonInfo"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Help/VCController/homeVC/controller/HomeVC.m"
+            timestampString = "560770659.90049"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "-selectInfo:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

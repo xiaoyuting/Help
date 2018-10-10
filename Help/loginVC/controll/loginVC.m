@@ -165,7 +165,7 @@
 - (void)setPersonInfo{
     [getPersonInfoRequest getPersonInfoSuccess:^(NSDictionary *dic) {
         if([[dic objectForKey:@"code"] isEqualToString:@"200"]){
-            [DBInfo saveInfo:[dic objectForKey:@"data"]];
+            [DBInfo savePersonInfo:[dic objectForKey:@"data"]];
             
             DLog(@"person==%@",[dic objectForKey:@"data"]);
         }else{

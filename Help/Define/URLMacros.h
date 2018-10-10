@@ -34,13 +34,16 @@
 #define URL_loginUsername URL_main(@"sign-in/username")
 #define URL_loginPhone URL_main(@"sign-in/phone")
 #define URL_loginUserID URL_main(@"sign-in/id-card")
-#define URL_moment_recommend2  URL_main(@"moments/moment/recommend2")
-#define URL_origanization  URL_main(@"organization/organization/list-paging")
-#define URL_service        URL_main(@"organization/service-item/list-paging")
-#define URL_organization_id    URL_main(@"organization/organization-file/query-all-by-organization-id")
-#define URL_Coll_cirl    URL_main(@"moments/moment/create")
-#define URL_user_detail   URL_main(@"profile/user")
+#define URL_moment_recommend2         URL_main(@"moments/moment/recommend2")
+#define URL_origanization             URL_main(@"organization/organization/list-paging")
+#define URL_service                   URL_main(@"organization/service-item/list-paging")
+#define URL_organization_id           URL_main(@"organization/organization-file/query-all-by-organization-id")
+#define URL_Coll_cirl                 URL_main(@"moments/moment/create")
+#define URL_user_detail               URL_main(@"profile/user")
 #define URL_relative_user             URL_main(@"profile/relative/users")
+#define URL_media_relative_list       URL_main(@"media/relative-with-url/list")
+#define URL_user_pic                  URL_main(@"media/with-url/list")
+
 #if DevelopSever
 
 /**开发服务器*/

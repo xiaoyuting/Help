@@ -44,6 +44,6 @@
     _dic =dic;
     self.name.text  =[dic objectForKey:@"realName"];
     
-    [self.img sd_setImageWithURL:imgUrl([dic objectForKey:@""]) placeholderImage:placeholdImg];
+    [self.img sd_setImageWithURL:imgUrl([dic objectForKey:@"avatarUrl"]) placeholderImage:placeholdImg];
 }
 @end

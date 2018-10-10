@@ -34,7 +34,7 @@
 #import "SDPhotoBrowser.h"
 #import "relativeCollCell.h"
 #import <AVFoundation/AVFoundation.h>
-@interface SDWeiXinPhotoContainerView () <SDPhotoBrowserDelegate  >
+@interface SDWeiXinPhotoContainerView () <SDPhotoBrowserDelegate>
 
 @property (nonatomic, strong) NSArray *imageViewsArray;
 //@property (nonatomic,strong)  UICollectionView  * collecView;
@@ -138,7 +138,7 @@
         if (_picPathStringsArray.count == 1) {
             UIImageView * imgview = [[UIImageView alloc]init];
             [weakself   videoImageWithvideoURL:imgUrl(_picPathStringsArray.lastObject) atTime:1 :imgview ];
-           // UIImage * image = [self firstFrameWithVideoURL:imgUrl(_picPathStringsArray.lastObject) size:CGSizeZero];
+           //UIImage * image = [self firstFrameWithVideoURL:imgUrl(_picPathStringsArray.lastObject) size:CGSizeZero];
             if (imgview.image.size.width) {
                 itemH = imgview.image.size.height / imgview.image.size.width * itemW;
             }

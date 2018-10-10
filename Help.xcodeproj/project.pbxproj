@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		870320EE216AF2740061BF43 /* userPicRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 870320ED216AF2740061BF43 /* userPicRequest.m */; };
+		870320F1216AF7D30061BF43 /* picAndVideoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 870320F0216AF7D30061BF43 /* picAndVideoVC.m */; };
+		870320F4216B0FCD0061BF43 /* mediaCollcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 870320F3216B0FCD0061BF43 /* mediaCollcell.m */; };
+		8703221B216CAA520061BF43 /* picScrollVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8703221A216CAA520061BF43 /* picScrollVC.m */; };
 		875967672137862C00052221 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 875967662137862C00052221 /* AppDelegate.m */; };
 		8759676A2137862C00052221 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 875967692137862C00052221 /* ViewController.m */; };
 		8759676D2137862C00052221 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8759676B2137862C00052221 /* Main.storyboard */; };
@@ -706,6 +710,7 @@
 		87C004F52152043100E1C3FB /* DBInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C004F42152043100E1C3FB /* DBInfo.m */; };
 		87C004F82152574300E1C3FB /* getPersonInfoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C004F72152574300E1C3FB /* getPersonInfoRequest.m */; };
 		87C004FC2152A58C00E1C3FB /* relativeUsersRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C004FB2152A58C00E1C3FB /* relativeUsersRequest.m */; };
+		87C004FF21533E9D00E1C3FB /* mediaRelativelistRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C004FE21533E9C00E1C3FB /* mediaRelativelistRequest.m */; };
 		87C774B12141083300B54EF3 /* iPad App-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C7749C2141083300B54EF3 /* iPad App-76@2x.png */; };
 		87C774B22141083300B54EF3 /* iPad Settings-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C7749D2141083300B54EF3 /* iPad Settings-29.png */; };
 		87C774B32141083300B54EF3 /* iPad Pro App-83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C7749E2141083300B54EF3 /* iPad Pro App-83.5@2x.png */; };
@@ -791,6 +796,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		870320EC216AF2740061BF43 /* userPicRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = userPicRequest.h; sourceTree = "<group>"; };
+		870320ED216AF2740061BF43 /* userPicRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = userPicRequest.m; sourceTree = "<group>"; };
+		870320EF216AF7D30061BF43 /* picAndVideoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = picAndVideoVC.h; sourceTree = "<group>"; };
+		870320F0216AF7D30061BF43 /* picAndVideoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = picAndVideoVC.m; sourceTree = "<group>"; };
+		870320F2216B0FCD0061BF43 /* mediaCollcell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mediaCollcell.h; sourceTree = "<group>"; };
+		870320F3216B0FCD0061BF43 /* mediaCollcell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mediaCollcell.m; sourceTree = "<group>"; };
+		87032219216CAA520061BF43 /* picScrollVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = picScrollVC.h; sourceTree = "<group>"; };
+		8703221A216CAA520061BF43 /* picScrollVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = picScrollVC.m; sourceTree = "<group>"; };
 		875967622137862C00052221 /* Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		875967652137862C00052221 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		875967662137862C00052221 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1618,6 +1631,8 @@
 		87C004F72152574300E1C3FB /* getPersonInfoRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = getPersonInfoRequest.m; sourceTree = "<group>"; };
 		87C004FA2152A58C00E1C3FB /* relativeUsersRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = relativeUsersRequest.h; sourceTree = "<group>"; };
 		87C004FB2152A58C00E1C3FB /* relativeUsersRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = relativeUsersRequest.m; sourceTree = "<group>"; };
+		87C004FD21533E9C00E1C3FB /* mediaRelativelistRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mediaRelativelistRequest.h; sourceTree = "<group>"; };
+		87C004FE21533E9C00E1C3FB /* mediaRelativelistRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mediaRelativelistRequest.m; sourceTree = "<group>"; };
 		87C7749C2141083300B54EF3 /* iPad App-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad App-76@2x.png"; sourceTree = "<group>"; };
 		87C7749D2141083300B54EF3 /* iPad Settings-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Settings-29.png"; sourceTree = "<group>"; };
 		87C7749E2141083300B54EF3 /* iPad Pro App-83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Pro App-83.5@2x.png"; sourceTree = "<group>"; };
@@ -2048,6 +2063,10 @@
 			children = (
 				875967D62137867E00052221 /* HomeVC.m */,
 				875967D72137867E00052221 /* HomeVC.h */,
+				870320EF216AF7D30061BF43 /* picAndVideoVC.h */,
+				870320F0216AF7D30061BF43 /* picAndVideoVC.m */,
+				87032219216CAA520061BF43 /* picScrollVC.h */,
+				8703221A216CAA520061BF43 /* picScrollVC.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -2061,6 +2080,8 @@
 				875967DC2137867E00052221 /* AddButton.m */,
 				875967DB2137867E00052221 /* relativeCollCell.h */,
 				875967DE2137867E00052221 /* relativeCollCell.m */,
+				870320F2216B0FCD0061BF43 /* mediaCollcell.h */,
+				870320F3216B0FCD0061BF43 /* mediaCollcell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -3219,10 +3240,10 @@
 		87596AEB2137868000052221 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				87596AEC2137868000052221 /* RequestManager.m */,
+				87596AEF2137868000052221 /* UIImage+CompressImage.h */,
 				87596AED2137868000052221 /* UIImage+CompressImage.m */,
 				87596AEE2137868000052221 /* RequestManager.h */,
-				87596AEF2137868000052221 /* UIImage+CompressImage.h */,
+				87596AEC2137868000052221 /* RequestManager.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -3323,6 +3344,10 @@
 			children = (
 				87C004FA2152A58C00E1C3FB /* relativeUsersRequest.h */,
 				87C004FB2152A58C00E1C3FB /* relativeUsersRequest.m */,
+				87C004FD21533E9C00E1C3FB /* mediaRelativelistRequest.h */,
+				87C004FE21533E9C00E1C3FB /* mediaRelativelistRequest.m */,
+				870320EC216AF2740061BF43 /* userPicRequest.h */,
+				870320ED216AF2740061BF43 /* userPicRequest.m */,
 			);
 			path = request;
 			sourceTree = "<group>";
@@ -4294,6 +4319,7 @@
 				87596D5F2137868100052221 /* UIView+Tool.m in Sources */,
 				87C77B60214275D600B54EF3 /* UIImageView+HighlightedWebCache.m in Sources */,
 				87C77B63214275D600B54EF3 /* UIImage+MultiFormat.m in Sources */,
+				8703221B216CAA520061BF43 /* picScrollVC.m in Sources */,
 				87596D732137868100052221 /* ugliestFontImageList.m in Sources */,
 				87596D562137868100052221 /* SDCycleScrollView.m in Sources */,
 				87C7750C21410FEB00B54EF3 /* MJRefreshComponent.m in Sources */,
@@ -4304,6 +4330,7 @@
 				87596D912137868100052221 /* RootBaseBar.m in Sources */,
 				87C77BA521465BBB00B54EF3 /* thirdmodel.m in Sources */,
 				87C77B62214275D600B54EF3 /* UIImage+GIF.m in Sources */,
+				87C004FF21533E9D00E1C3FB /* mediaRelativelistRequest.m in Sources */,
 				87596D252137868100052221 /* webVC.m in Sources */,
 				87C77B922142977400B54EF3 /* JPVideoPlayerControlViews.m in Sources */,
 				87C77B8D2142977400B54EF3 /* JPVideoPlayerCache.m in Sources */,
@@ -4360,6 +4387,7 @@
 				87C004EC2151EAFC00E1C3FB /* usernameLogin.m in Sources */,
 				87C77B972142977400B54EF3 /* JPVideoPlayerSupportUtils.m in Sources */,
 				87C77B5E214275D600B54EF3 /* SDWebImageManager.m in Sources */,
+				870320EE216AF2740061BF43 /* userPicRequest.m in Sources */,
 				87596B512137868000052221 /* CLLuckyLabel.m in Sources */,
 				87C77B67214275D600B54EF3 /* SDWebImageDownloaderOperation.m in Sources */,
 				878C4044214A117900B3F2D8 /* YYClassInfo.m in Sources */,
@@ -4379,6 +4407,7 @@
 				87C774F921410FEB00B54EF3 /* UIScrollView+MJRefresh.m in Sources */,
 				87C77BB22146B48E00B54EF3 /* imgShowVC.m in Sources */,
 				87596D652137868100052221 /* ScanButton.m in Sources */,
+				870320F4216B0FCD0061BF43 /* mediaCollcell.m in Sources */,
 				87C77B982142977400B54EF3 /* UITableViewCell+WebVideoCache.m in Sources */,
 				87596D5E2137868100052221 /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				87C77B912142977400B54EF3 /* JPVideoPlayerCacheFile.m in Sources */,
@@ -4409,6 +4438,7 @@
 				87596B042137868000052221 /* meCell.m in Sources */,
 				87596D6B2137868100052221 /* XYScanView.m in Sources */,
 				87596D582137868100052221 /* SDCollectionViewCell.m in Sources */,
+				870320F1216AF7D30061BF43 /* picAndVideoVC.m in Sources */,
 				87C7750021410FEB00B54EF3 /* MJRefreshBackStateFooter.m in Sources */,
 				87596D3B2137868100052221 /* View+MASAdditions.m in Sources */,
 				875967752137862C00052221 /* main.m in Sources */,
